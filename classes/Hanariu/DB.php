@@ -34,7 +34,27 @@ class DB {
 
 	public static function expr($string, $parameters = array())
 	{
-		return new Database\Expression($string, $parameters);
+		return new \Hanariu\Database\Expression($string, $parameters);
+	}
+
+	public static function alter($table)
+	{
+		return new \Hanariu\Database\Query\Builder\Alter($table);
+	}
+
+	public static function create($table)
+	{
+		return new \Hanariu\Database\Query\Builder\Create($table);
+	}
+	
+	public static function drop($type, $name)
+	{
+		return new \Hanariu\Database\Query\Builder\Drop($type, $name);
+	}
+	
+	public static function truncate($table)
+	{
+		return new \Hanariu\Database\Query\Builder\Truncate($table);
 	}
 
 }

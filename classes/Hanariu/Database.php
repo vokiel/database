@@ -6,6 +6,10 @@ abstract class Database {
 	const INSERT =  2;
 	const UPDATE =  3;
 	const DELETE =  4;
+	const CREATE =  5;
+	const ALTER =  6;
+	const DROP =  7;
+	const TRUNCATE =  8;
 
 	public static $default = 'default';
 	public static $instances = array();
