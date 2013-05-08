@@ -150,7 +150,7 @@ class Select extends \Hanariu\Database\Query\Builder\Where {
 			$select = \Hanariu\DB::select()->from($select);
 		}
 		if ( ! $select instanceof \Hanariu\Database\Query\Builder\Select)
-			throw new \Hanariu\Exception('first parameter must be a string or an instance of Database_Query_Builder_Select');
+			throw new \Hanariu\Exception('first parameter must be a string or an instance of \Hanariu\Database\Query\Builder\Select');
 		$this->_union []= array('select' => $select, 'all' => $all);
 		return $this;
 	}

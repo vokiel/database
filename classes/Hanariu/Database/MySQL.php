@@ -77,7 +77,7 @@ class MySQL extends \Hanariu\Database {
 				mysql_errno($this->_connection));
 		}
 
-		Database_MySQL::$_current_databases[$this->_connection_id] = $database;
+		\Hanariu\Database\MySQL::$_current_databases[$this->_connection_id] = $database;
 	}
 
 	public function disconnect()
@@ -118,7 +118,7 @@ class MySQL extends \Hanariu\Database {
 
 		if ($status === FALSE)
 		{
-			throw new Database_Exception(':error',
+			throw new \Hanariu\Database\Exception(':error',
 				array(':error' => mysql_error($this->_connection)),
 				mysql_errno($this->_connection));
 		}
@@ -129,7 +129,7 @@ class MySQL extends \Hanariu\Database {
 		// Make sure the database is connected
 		$this->_connection or $this->connect();
 
-		if (Hanariu::$profiling)
+		if (\Hanariu\Hanariu::$profiling)
 		{
 			$benchmark = \Hanariu\Profiler::start("Database ({$this->_instance})", $sql);
 		}
