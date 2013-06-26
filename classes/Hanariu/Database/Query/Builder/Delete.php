@@ -1,6 +1,6 @@
 <?php namespace Hanariu\Database\Query\Builder;
 
-class Delete extends \HanariuDatabase\Query\Builder\Where {
+class Delete extends \Hanariu\Database\Query\Builder\Where {
 
 	protected $_table;
 

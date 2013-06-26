@@ -77,7 +77,7 @@ class MySQL extends \Hanariu\Database {
 				mysql_errno($this->_connection));
 		}
 
-		\Hanariu\Database\MySQL::$_current_databases[$this->_connection_id] = $database;
+    MySQL::$_current_databases[$this->_connection_id] = $database;
 	}
 
 	public function disconnect()
@@ -118,7 +118,7 @@ class MySQL extends \Hanariu\Database {
 
 		if ($status === FALSE)
 		{
-			throw new \Hanariu\Database\Exception(':error',
+			throw new Database_Exception(':error',
 				array(':error' => mysql_error($this->_connection)),
 				mysql_errno($this->_connection));
 		}

@@ -1,6 +1,6 @@
 <?php namespace Hanariu\Database\MySQL;
 
-class Result extends Hanariu\Database\Result {
+class Result extends \Hanariu\Database\Result {
 
 	protected $_internal_row = 0;
 

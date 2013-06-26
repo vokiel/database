@@ -18,14 +18,14 @@ abstract class Database {
 	{
 		if ($name === NULL)
 		{
-			$name = \Hanariu\Database::$default;
+			$name = Database::$default;
 		}
 
-		if ( ! isset(\HanariuDatabase::$instances[$name]))
+		if ( ! isset(Database::$instances[$name]))
 		{
 			if ($config === NULL)
 			{
-				$config = \Hanariu\Hanariu::$config->load('database')->$name;
+				$config = Hanariu::$config->load('database')->$name;
 			}
 
 			if ( ! isset($config['type']))
@@ -34,12 +34,13 @@ abstract class Database {
 					array(':name' => $name));
 			}
 
-			$driver = '\\Hanariu\\Database\\'.ucfirst($config['type']);
-			$driver = new $driver($name, $config);
-			\Hanariu\Database::$instances[$name] = $driver;
+			//$driver = 'Database_'.ucfirst($config['type']);
+      $driver = '\Hanariu\Database\\'.ucfirst($config['type']);
+      $driver = new $driver($name, $config);
+      Database::$instances[$name] = $driver;
 		}
 
-		return \Hanariu\Database::$instances[$name];
+		return Database::$instances[$name];
 	}
 
 	public $last_query;
@@ -73,7 +74,7 @@ abstract class Database {
 
 	public function disconnect()
 	{
-		unset(\Hanariu\Database::$instances[$this->_instance]);
+		unset(Database::$instances[$this->_instance]);
 
 		return TRUE;
 	}
@@ -92,7 +93,7 @@ abstract class Database {
 	{
 		$table = $this->quote_table($table);
 
-		return $this->query(\Hanariu\Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM '.$table, FALSE)
+		return $this->query(Database::SELECT, 'SELECT COUNT(*) AS total_row_count FROM '.$table, FALSE)
 			->get('total_row_count');
 	}
 

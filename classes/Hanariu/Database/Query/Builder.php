@@ -104,7 +104,7 @@ abstract class Builder extends \Hanariu\Database\Query {
 		return $sql;
 	}
 
-	protected function _compile_set(Database $db, array $values)
+	protected function _compile_set(\Hanariu\Database $db, array $values)
 	{
 		$set = array();
 		foreach ($values as $group)
